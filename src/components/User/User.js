@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 
 const User = (props) => {
     const {name,email,picture,website, phone} = props.user;
+    const addMember = props.addMember;
     const [mobile, setMobile] = useState('');
+    const fullName = name.first + ' ' + name.last;
     const userStyle={
         border:'2px solid red',
         margin:'10px',
@@ -18,12 +20,12 @@ const User = (props) => {
                 <img src={picture.large} alt=""/>
             </div>
             <div style={{marginLeft:'20px'}}>
-                <h1>Name: {name.first + ' ' + name.last}</h1>
+                <h1>Name: {fullName}</h1>
                 <p>email : {email}</p>
                 <p><a target="_blank" href={website} rel="noreferrer">Learn about me</a></p>
                 <p>Phone: {mobile}</p>
                 <button onClick={showPhone}>Show Phone Number</button>
-                <button>Add me</button>
+                <button onClick={()=>addMember(fullName)}>Add me</button>
             </div>
             
         </div>
